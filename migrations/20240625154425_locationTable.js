@@ -5,7 +5,7 @@
 export function up(knex) {
   return knex.schema.createTable("locations", (table) => {
     table.increments("id").primary();
-    table.string("country").notNullable();
+    table.string("name").notNullable();
   });
 }
 
