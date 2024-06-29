@@ -2,19 +2,10 @@ export async function seed(knex) {
   await knex("locations").del();
   await knex("locations").insert([
     {
-      name: "Japan",
+      name: "Spain",
     },
     {
       name: "Colombia",
-    },
-    {
-      name: "Lebanon",
-    },
-    {
-      name: "Taiwan",
-    },
-    {
-      name: "Nigeria",
     },
   ]);
 }
