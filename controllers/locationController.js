@@ -13,6 +13,26 @@ const getLocationPosts = async (req, res) => {
   }
 };
 
+const createLocationPosts = async (req, res) => {
+  if (!req.body.title || !req.body.content || !req.body.location_id) {
+    res
+      .status(400)
+      .json({ message: "Please provide a title and content for your post" });
+    return;
+  }
+
+  const newPost = await createModel(req.body);
+
+  if (!newPost) {
+    res.status(400).json({
+      message: "Could not create post",
+    });
+    return;
+  }
+
+  res.json(newPost);
+};
+
 const getLocations = async (req, res) => {
   try {
     const data = await getLocationData();
@@ -23,4 +43,4 @@ const getLocations = async (req, res) => {
   }
 };
 
-export { getLocationPosts, getLocations };
+export { getLocationPosts, getLocations, createLocationPosts };

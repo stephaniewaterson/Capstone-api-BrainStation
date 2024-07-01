@@ -8,7 +8,7 @@ export function up(knex) {
     table.integer("location_id").unsigned().references("locations.id");
     table.string("title").notNullable();
     table.text("content").notNullable();
-    table.string("image");
+    table.varchar("image");
     table.timestamp("created_at").defaultTo(knex.fn.now());
   });
 }

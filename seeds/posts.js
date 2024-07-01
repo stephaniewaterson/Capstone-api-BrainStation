@@ -4,6 +4,7 @@ export async function seed(knex) {
     {
       location_id: 1,
       title: "Using 'Guay' to Describe Cool Things",
+      image: null,
       content:
         "When I first heard 'guay' in Spain, I loved how versatile it was. It means 'cool' or 'great', and I found myself using it to describe everything from clothes to experiences. Saying, 'Eso es guay' made me feel like a local.",
     },
@@ -26,7 +27,7 @@ export async function seed(knex) {
       title: "La Tomatina: Spain’s Iconic Tomato Festival",
       content:
         "La Tomatina, held annually in Buñol, is one of Spain's most famous festivals. Every August, thousands gather to throw tomatoes in a massive, friendly food fight. It’s an exhilarating experience, filled with laughter and vibrant red everywhere!",
-      image: null,
+      image: "http://localhost:8080/images/tomatina.jpg",
     },
     {
       location_id: 2,
