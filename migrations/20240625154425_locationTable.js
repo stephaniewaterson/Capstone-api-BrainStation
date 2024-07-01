@@ -6,6 +6,7 @@ export function up(knex) {
   return knex.schema.createTable("locations", (table) => {
     table.increments("id").primary();
     table.string("name").notNullable();
+    table.varchar("img").notNullable();
   });
 }
 
