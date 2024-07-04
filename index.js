@@ -3,6 +3,7 @@ import "dotenv/config.js";
 import cors from "cors";
 
 import locationRoutes from "./routes/locationRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
 
 const PORT = process.env.PORT;
 const BACKEND_URL = process.env.BACKEND_URL;
@@ -16,6 +17,7 @@ app.use(express.static("public"));
 app.use(cors({ origin: FRONTEND_URL }));
 
 app.use("/locations", locationRoutes);
+app.use("/posts", postRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${BACKEND_URL}:${PORT}`);

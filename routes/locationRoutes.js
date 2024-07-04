@@ -1,8 +1,6 @@
 import express from "express";
 const router = express.Router();
-import initKnex from "knex";
-import configuration from "../knexfile.js";
-const knex = initKnex(configuration);
+
 import {
   getLocationPosts,
   getLocations,
