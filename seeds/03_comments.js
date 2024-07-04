@@ -32,11 +32,10 @@ export async function seed(knex) {
     },
     {
       post_id: 2,
-      name: Jack,
+      name: "Jack",
       comment:
         "And tú flipas si crees que voy a volver means you're out of your mind if you think i'll come back",
     },
-
     {
       post_id: 1,
       name: "Emily",

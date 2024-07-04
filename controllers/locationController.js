@@ -1,4 +1,9 @@
-import { getPostData, getLocationData } from "../models/locationModels.js";
+import {
+  getPostData,
+  getLocationData,
+  getCommentData,
+  createModel,
+} from "../models/locationModels.js";
 
 const getLocationPosts = async (req, res) => {
   try {
@@ -6,6 +11,16 @@ const getLocationPosts = async (req, res) => {
 
     const data = await getPostData(locationId);
 
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
+
+const getLocationPostComments = async (req, res) => {
+  try {
+    const data = await getCommentData();
     res.json(data);
   } catch (error) {
     console.log(error);
@@ -43,4 +58,9 @@ const getLocations = async (req, res) => {
   }
 };
 
-export { getLocationPosts, getLocations, createLocationPosts };
+export {
+  getLocationPosts,
+  getLocations,
+  createLocationPosts,
+  getLocationPostComments,
+};
