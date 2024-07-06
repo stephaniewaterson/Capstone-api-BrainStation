@@ -1,8 +1,12 @@
 import express from "express";
 const router = express.Router();
 
-import { getPostComments } from "../controllers/postController.js";
+import {
+  createPostComments,
+  getPostComments,
+} from "../controllers/postController.js";
 
 router.get("/:id/comments", getPostComments);
+router.post("/:id/comments", createPostComments);
 
 export default router;

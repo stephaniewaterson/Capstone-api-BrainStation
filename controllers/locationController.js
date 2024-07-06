@@ -1,7 +1,6 @@
 import {
   getPostData,
   getLocationData,
-  getCommentData,
   createModel,
 } from "../models/locationModels.js";
 

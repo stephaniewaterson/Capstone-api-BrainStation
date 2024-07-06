@@ -11,12 +11,6 @@ export const getPostData = async (locationId) => {
   return data;
 };
 
-export const getCommentData = async () => {
-  const data = await knex.select("*").from("comments");
-
-  return data;
-};
-
 export async function createModel(body) {
   try {
     const result = await knex("posts").insert(body);

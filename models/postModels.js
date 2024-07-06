@@ -14,3 +14,17 @@ export const getCommentData = async (postId) => {
     console.log(error);
   }
 };
+
+export async function createCommentModel(body) {
+  try {
+    const result = await knex("comments").insert(body);
+
+    const newCommentId = result[0];
+    const createdComment = await knex("comments")
+      .where({ id: newCommentId })
+      .first();
+    return createdComment;
+  } catch (error) {
+    return false;
+  }
+}
