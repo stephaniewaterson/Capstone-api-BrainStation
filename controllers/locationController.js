@@ -2,6 +2,7 @@ import {
   getPostData,
   getLocationData,
   createModel,
+  deletePost,
 } from "../models/locationModels.js";
 
 const getLocationPosts = async (req, res) => {
@@ -17,14 +18,18 @@ const getLocationPosts = async (req, res) => {
   }
 };
 
-const getLocationPostComments = async (req, res) => {
-  try {
-    const data = await getCommentData();
-    res.json(data);
-  } catch (error) {
-    console.log(error);
-    return false;
+const deleteLocationPosts = async (req, res) => {
+  const delPost = await deletePost(req.params.id);
+  console.log(req.params.id);
+
+  if (!delPost) {
+    res.status(404).json({
+      message: `Post with ID: ${req.params.id} is not found.`,
+    });
+    return;
   }
+
+  res.status(204).end();
 };
 
 const createLocationPosts = async (req, res) => {
@@ -61,5 +66,5 @@ export {
   getLocationPosts,
   getLocations,
   createLocationPosts,
-  getLocationPostComments,
+  deleteLocationPosts,
 };

@@ -23,6 +23,16 @@ export async function createModel(body) {
   }
 }
 
+export async function deletePost(id) {
+  try {
+    const data = await knex("posts").where("posts.id", id).del();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
 export const getLocationData = async () => {
   const data = await knex.select("*").from("locations");
 

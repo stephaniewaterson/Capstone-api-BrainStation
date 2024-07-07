@@ -5,7 +5,12 @@
 export function up(knex) {
   return knex.schema.createTable("comments", (table) => {
     table.increments("id").primary();
-    table.integer("post_id").unsigned().references("posts.id");
+    table
+      .integer("post_id")
+      .unsigned()
+      .references("posts.id")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
     table.string("name").notNullable();
     table.string("comment").notNullable();
     table.timestamp("created_at").defaultTo(knex.fn.now());
