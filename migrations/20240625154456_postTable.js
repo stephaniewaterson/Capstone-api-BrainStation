@@ -6,6 +6,8 @@ export function up(knex) {
   return knex.schema.createTable("posts", (table) => {
     table.increments("id").primary();
     table.integer("location_id").unsigned().references("locations.id");
+    table.integer("user_id").unsigned().notNullable();
+    table.foreign("user_id").references("id").inTable("users");
     table.string("title").notNullable();
     table.text("content").notNullable();
     table.varchar("image");

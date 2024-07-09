@@ -33,14 +33,25 @@ const deleteLocationPosts = async (req, res) => {
 };
 
 const createLocationPosts = async (req, res) => {
-  if (!req.body.title || !req.body.content || !req.body.location_id) {
+  if (!req.body.title || !req.body.content) {
     res
       .status(400)
       .json({ message: "Please provide a title and content for your post" });
     return;
   }
 
-  const newPost = await createModel(req.body);
+  const locationId = req.params.id;
+  const { title, content } = req.body;
+  const userId = req.userId;
+
+  const newPostContent = {
+    user_id: userId,
+    title,
+    content,
+    location_id: locationId,
+  };
+
+  const newPost = await createModel(newPostContent);
 
   if (!newPost) {
     res.status(400).json({

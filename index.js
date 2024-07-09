@@ -6,6 +6,7 @@ import { Server } from "socket.io";
 
 import locationRoutes from "./routes/locationRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
+import userRoutes from "./routes/usersRoutes.js";
 
 const PORT = process.env.PORT;
 const WS_PORT = process.env.WS_PORT;
@@ -21,6 +22,7 @@ app.use(cors({ origin: FRONTEND_URL }));
 
 app.use("/locations", locationRoutes);
 app.use("/posts", postRoutes);
+app.use("/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${BACKEND_URL}:${PORT}`);
