@@ -20,7 +20,6 @@ const getLocationPosts = async (req, res) => {
 
 const deleteLocationPosts = async (req, res) => {
   const delPost = await deletePost(req.params.id);
-  console.log(req.params.id);
 
   if (!delPost) {
     res.status(404).json({

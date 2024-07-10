@@ -60,6 +60,7 @@ export const loginUser = async (req, res) => {
 
 export const retrieveSingleUser = async (req, res) => {
   const user = await knex("users").where({ id: req.userId }).first();
+
   delete user.password;
   res.json(user);
 };
