@@ -3,17 +3,17 @@ import configuration from "../knexfile.js";
 const knex = initKnex(configuration);
 
 export const getPostData = async (locationId) => {
-  const data = await knex("users")
-    .join("user", "user.id", "post.user_id")
+  const data = await knex("posts")
+    .join("users", "users.id", "posts.user_id")
     .select(
-      "post.id",
+      "posts.id",
       "title",
       "content",
-      "img",
+      "image",
       "location_id",
       "created_at",
-      "user.id as user_id",
-      "user.name as user_name"
+      "users.id as user_id",
+      "users.name as user_name"
     )
     .where("location_id", locationId)
     .orderBy("created_at", "desc");
