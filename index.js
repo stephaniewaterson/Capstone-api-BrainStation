@@ -7,6 +7,7 @@ import { Server } from "socket.io";
 import locationRoutes from "./routes/locationRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
 import userRoutes from "./routes/usersRoutes.js";
+import { CLIENT_RENEG_LIMIT } from "tls";
 
 const PORT = process.env.PORT;
 const WS_PORT = process.env.WS_PORT;
@@ -46,6 +47,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("send_message", (data) => {
+    console.log("socket send message");
+    console.log(data);
     socket.to(data.room).emit("receive_message", data);
   });
 
