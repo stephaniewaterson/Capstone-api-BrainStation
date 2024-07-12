@@ -3,10 +3,20 @@ import configuration from "../knexfile.js";
 const knex = initKnex(configuration);
 
 export const getPostData = async (locationId) => {
-  const data = await knex
-    .select("*")
-    .from("posts")
-    .where("location_id", locationId);
+  const data = await knex("posts")
+    .join("users", "users.id", "posts.user_id")
+    .select(
+      "posts.id",
+      "title",
+      "content",
+      "image",
+      "location_id",
+      "created_at",
+      "users.id as user_id",
+      "users.name as user_name"
+    )
+    .where("location_id", locationId)
+    .orderBy("created_at", "desc");
 
   return data;
 };
@@ -19,7 +29,7 @@ export async function createModel(body) {
     const createdPost = await knex("posts").where({ id: newPostId }).first();
     return createdPost;
   } catch (error) {
-    return false;
+    console.log(error);
   }
 }
 
