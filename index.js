@@ -57,6 +57,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Web socket Server is running on ${BACKEND_URL}:${PORT}`);
+server.listen(WS_PORT, () => {
+  console.log(`Web socket Server is running on ${BACKEND_URL}:${WS_PORT}`);
 });
