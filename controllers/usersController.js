@@ -2,6 +2,7 @@ import initKnex from "knex";
 import config from "../knexfile.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { getAllUserData } from "../models/usersModels.js";
 
 const knex = initKnex(config);
 
@@ -63,4 +64,14 @@ export const retrieveSingleUser = async (req, res) => {
 
   delete user.password;
   res.json(user);
+};
+
+export const retrieveAllUsers = async (req, res) => {
+  try {
+    const data = await getAllUserData();
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 };
