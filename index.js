@@ -29,6 +29,8 @@ app.listen(PORT, () => {
   console.log(`Server is running on ${BACKEND_URL}:${PORT}`);
 });
 
+http.listen(PORT, "127.0.0.1");
+
 const server = http.createServer(app);
 
 const io = new Server(server, {
